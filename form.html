@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Centered Form</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center; /* Horizontal center */
+        align-items: center; /* Vertical center */
+        background-color: #f0f0f0;
+      }
+
+      .form-box {
+        background: white;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      input,
+      button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 16px;
+        background-color: aqua;
+          box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-box">
+      <h2>Simple Form</h2>
+      <form>
+        <input type="text" placeholder="Enter your name" required />
+        <input type="email" placeholder="Enter your email" required />
+        <input type="submit" value="Submit">
+        <!-- <button type="submit">Submit</button> -->
+      </form>
+    </div>
+  </body>
+</html>
