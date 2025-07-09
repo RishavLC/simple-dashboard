@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simple Dashboard</title>
+  <title>Dashboard with Toggle Sidebar</title>
   <style>
     * {
       box-sizing: border-box;
@@ -22,6 +22,7 @@
       background-color: #2c3e50;
       color: white;
       padding: 20px;
+      transition: all 0.3s ease;
     }
 
     .sidebar h2 {
@@ -45,6 +46,8 @@
     .content {
       flex-grow: 1;
       padding: 20px;
+      transition: margin-left 0.3s ease;
+      width: 100%;
     }
 
     iframe {
@@ -52,11 +55,28 @@
       height: 100%;
       border: none;
     }
+
+    .toggle-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    /* Hide sidebar */
+    .sidebar.hidden {
+      width: 0;
+      padding: 0;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
 
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <h2>Dashboard</h2>
     <a href="https://example.com" target="content-frame">Home</a>
     <a href="https://wikipedia.org" target="content-frame">Wikipedia</a>
@@ -65,8 +85,16 @@
   </div>
 
   <div class="content">
+    <button class="toggle-btn" onclick="toggleSidebar()">Toggle Sidebar</button>
     <iframe name="content-frame" src="https://example.com"></iframe>
   </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("hidden");
+    }
+  </script>
 
 </body>
 </html>
