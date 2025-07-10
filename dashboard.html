@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard with Toggle Sidebar</title>
+  <title>Dashboard with Collapsible Sidebar</title>
   <style>
     * {
       box-sizing: border-box;
@@ -23,11 +23,33 @@
       color: white;
       padding: 20px;
       transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 60px;
+      padding: 20px 10px;
+    }
+
+    .toggle-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      width: 100%;
     }
 
     .sidebar h2 {
+      font-size: 20px;
       margin-bottom: 20px;
-      font-size: 22px;
+    }
+
+    .sidebar.collapsed h2,
+    .sidebar.collapsed a {
+      display: none;
     }
 
     .sidebar a {
@@ -37,6 +59,7 @@
       margin: 10px 0;
       padding: 8px;
       border-radius: 5px;
+      transition: background 0.2s;
     }
 
     .sidebar a:hover {
@@ -46,8 +69,6 @@
     .content {
       flex-grow: 1;
       padding: 20px;
-      transition: margin-left 0.3s ease;
-      width: 100%;
     }
 
     iframe {
@@ -55,28 +76,12 @@
       height: 100%;
       border: none;
     }
-
-    .toggle-btn {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 4px;
-      margin-bottom: 15px;
-    }
-
-    /* Hide sidebar */
-    .sidebar.hidden {
-      width: 0;
-      padding: 0;
-      overflow: hidden;
-    }
   </style>
 </head>
 <body>
 
   <div class="sidebar" id="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
     <h2>Dashboard</h2>
     <a href="https://example.com" target="content-frame">Home</a>
     <a href="https://wikipedia.org" target="content-frame">Wikipedia</a>
@@ -85,14 +90,13 @@
   </div>
 
   <div class="content">
-    <button class="toggle-btn" onclick="toggleSidebar()">Toggle Sidebar</button>
     <iframe name="content-frame" src="https://example.com"></iframe>
   </div>
 
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("hidden");
+      sidebar.classList.toggle("collapsed");
     }
   </script>
 
